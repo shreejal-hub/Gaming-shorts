@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Exam Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .logo i {
+            font-size: 48px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto 40px;
+            position: relative;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 50px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            font-size: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            padding-left: 50px;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            font-size: 1.2rem;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 25px 25px 15px;
+            position: relative;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .icon-math { background: linear-gradient(135deg, #4361ee, #4cc9f0); color: white; }
+        .icon-science { background: linear-gradient(135deg, #f72585, #b5179e); color: white; }
+        .icon-english { background: linear-gradient(135deg, #7209b7, #560bad); color: white; }
+        .icon-history { background: linear-gradient(135deg, #f8961e, #f3722c); color: white; }
+        
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .card-header p {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        .card-content {
+            padding: 0 25px 25px;
+            flex-grow: 1;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+        
+        .download-btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(67, 97, 238, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: #718096;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h1>Mock Exam Resources</h1>
+            <p class="subtitle">Access a comprehensive collection of practice exams, study guides, and learning materials to ace your upcoming tests</p>
+        </header>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-box" placeholder="Search for subjects, topics, or exam types...">
+        </div>
+        
+        <div class="categories">
+            <button class="category-btn active">All Subjects</button>
+            <button class="category-btn">Mathematics</button>
+            <button class="category-btn">Science</button>
+            <button class="category-btn">English</button>
+            <button class="category-btn">History</button>
+            <button class="category-btn">Answer Keys</button>
+        </div>
+        
+        <div class="resources-grid">
+            <!-- Resource 1 -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="card-icon icon-math">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Mathematics Mock Exam</h3>
+                    <p>Algebra, Geometry & Calculus</p>
+                </div>
+                <div class="card-content">
+                    <p>Comprehensive math exam covering all topics with detailed solutions. Perfect for final review before exams.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Resource 2 -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="card-icon icon-science">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science Practice Test</h3>
+                    <p>Biology, Chemistry & Physics</p>
+                </div>
+                <div class="card-content">
+                    <p>Full-length science test with diagrams and experiment-based questions. Includes answer explanations.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Resource 3 -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="card-icon icon-english">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>English Literature Exam</h3>
+                    <p>Comprehension & Analysis</p>
+                </div>
+                <div class="card-content">
+                    <p>Practice passages, essay questions, and poetry analysis. Model answers included for self-evaluation.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Resource 4 -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="card-icon icon-history">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>History Final Review</h3>
+                    <p>World History & Civilizations</p>
+                </div>
+                <div class="card-content">
+                    <p>Complete review package with timelines, key events, and essay questions. Perfect for exam preparation.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Resource 5 -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="card-icon icon-math">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3>Geometry Practice Set</h3>
+                    <p>Theorems & Problem Solving</p>
+                </div>
+                <div class="card-content">
+                    <p>200+ geometry problems with step-by-step solutions. Covers all difficulty levels from basic to advanced.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Resource 6 -->
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="card-icon icon-science">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Biology Exam Papers</h3>
+                    <p>Genetics, Ecology & Physiology</p>
+                </div>
+                <div class="card-content">
+                    <p>Collection of 5 complete biology exams with detailed diagrams and marking schemes for self-assessment.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Timed Practice</h3>
+                <p>Simulate real exam conditions with our timed test feature to improve your time management skills.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Performance Tracking</h3>
+                <p>Monitor your progress with detailed analytics and personalized feedback on your strengths and weaknesses.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Friendly</h3>
+                <p>Access all resources on any device. Study on the go with our responsive, mobile-optimized platform.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <h2>Stay Updated with New Resources</h2>
+            <p>Subscribe to our newsletter for the latest exam materials and study tips</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p class="copyright">© 2023 Mock Exam Resources. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple search functionality
+        document.querySelector('.search-box').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.resource-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('.card-content p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // In a real implementation, we would filter resources here
+            });
+        });
+        
+        // Card hover effect enhancement
+        const cards = document.querySelectorAll('.resource-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
